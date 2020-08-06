@@ -23,7 +23,11 @@ namespace EFCoreProject
         {
             services.AddControllers();
             var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<DataContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+                options.EnableSensitiveDataLogging(true);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

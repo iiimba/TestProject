@@ -15,10 +15,12 @@ namespace EFCoreProject.Controllers
             this.context = context;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{phone}")]
+        public IActionResult Get(string phone)
         {
-            var responses = context.Responses.OrderByDescending(r => r.WillAttend);
+            var responses = context.Responses
+                .Where(r => r.Phone == phone)
+                .OrderBy(r => r.Email);
 
             return Ok(responses);
         }
@@ -29,7 +31,7 @@ namespace EFCoreProject.Controllers
             context.Responses.Add(response);
             context.SaveChanges();
 
-            return Ok(new 
+            return Ok(new
             {
                 response.Id,
                 response.Name
