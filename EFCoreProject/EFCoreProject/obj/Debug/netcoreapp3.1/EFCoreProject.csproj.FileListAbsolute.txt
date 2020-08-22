@@ -50,4 +50,3 @@ C:\My\Work\Projects\EFCoreProject\EFCoreProject\bin\Debug\netcoreapp3.1\runtimes
 C:\My\Work\Projects\EFCoreProject\EFCoreProject\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\My\Work\Projects\EFCoreProject\EFCoreProject\obj\Debug\netcoreapp3.1\EFCoreProject.csproj.CoreCompileInputs.cache
 C:\My\Work\Projects\EFCoreProject\EFCoreProject\obj\Debug\netcoreapp3.1\EFCoreProject.MvcApplicationPartsAssemblyInfo.cache
-C:\My\Work\Projects\EFCoreProject\EFCoreProject\obj\Debug\netcoreapp3.1\EFCoreProject.csprojAssemblyReference.cache
