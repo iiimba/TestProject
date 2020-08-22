@@ -7,16 +7,17 @@ namespace DataApp.Controllers
     [Route("api/[controller]")]
     public class ProductValuesController : ControllerBase
     {
+        private DataContext context;
+
+        private ProductValuesController(DataContext context)
+        {
+            this.context = context;
+        }
+
         [HttpGet]
         public IActionResult GetProducts()
         {
-            var products = new Product[] 
-            {
-                new Product { Name = "Ball", Category = "Sport", Price = 200 },
-                new Product { Name = "Apple", Category = "Fruit", Price = 1 }
-            };
-
-            return Ok(products);
+            return Ok(this.context.Products);
         }
     }
 }
