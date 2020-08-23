@@ -42,7 +42,7 @@ namespace DataApp.Controllers
             }
 
             this.repository.CreateProduct(product);
-            return Ok();
+            return Ok(product.Id);
         }
 
         [HttpPut]

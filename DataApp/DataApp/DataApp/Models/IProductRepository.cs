@@ -13,5 +13,7 @@ namespace DataApp.Models
         void UpdateProduct(Product product);
 
         void DeleteProduct(Product product);
+
+        IEnumerable<Product> GetFilteredProducts(string category = null, decimal? price = null);
     }
 }

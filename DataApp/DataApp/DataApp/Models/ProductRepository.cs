@@ -40,5 +40,22 @@ namespace DataApp.Models
             this.context.Products.Remove(product);
             this.context.SaveChanges();
         }
+
+        public IEnumerable<Product> GetFilteredProducts(string category = null, decimal? minPrice = null)
+        {
+            IQueryable<Product> query = this.context.Products;
+
+            if (category != null)
+            {
+                query = query.Where(p => p.Category == category);
+            }
+
+            if (minPrice != null)
+            {
+                query = query.Where(p => p.Price > minPrice);
+            }
+
+            return query.ToList();
+        }
     }
 }
