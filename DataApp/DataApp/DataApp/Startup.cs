@@ -28,7 +28,14 @@ namespace DataApp
                 options.UseSqlServer(connectionString);
                 options.EnableSensitiveDataLogging();
             });
+            var customerConnectionString = this.Configuration["ConnectionStrings:CustomerConnection"];
+            services.AddDbContext<CustomerContext>(options =>
+            {
+                options.UseSqlServer(customerConnectionString);
+                options.EnableSensitiveDataLogging();
+            });
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

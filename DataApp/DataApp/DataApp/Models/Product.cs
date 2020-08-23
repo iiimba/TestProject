@@ -9,5 +9,15 @@
         public string Category { get; set; }
 
         public decimal Price { get; set; }
+        public Color Color { get; set; }
+
+        public bool InStock { get; set; }
+    }
+
+    public enum Color
+    {
+        Red,
+        Green,
+        Blue
     }
 }
