@@ -28,7 +28,10 @@ namespace DataApp.Models
 
         public void UpdateProduct(Product product)
         {
-            this.context.Products.Update(product);
+            var existingProduct = this.GetProduct(product.Id);
+            existingProduct.Name = product.Name;
+            existingProduct.Category = product.Category;
+            existingProduct.Price = product.Price;
             this.context.SaveChanges();
         }
 

@@ -59,11 +59,7 @@ namespace DataApp.Controllers
                 return BadRequest();
             }
 
-            existingProduct.Name = product.Name;
-            existingProduct.Category = product.Category;
-            existingProduct.Price = product.Price;
-
-            this.repository.UpdateProduct(existingProduct);
+            this.repository.UpdateProduct(product);
             return Ok();
         }
 
