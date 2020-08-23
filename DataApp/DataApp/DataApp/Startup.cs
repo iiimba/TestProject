@@ -39,7 +39,7 @@ namespace DataApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataContext dataContext, CustomerContext customerContext)
         {
             if (env.IsDevelopment())
             {
@@ -52,6 +52,12 @@ namespace DataApp
             {
                 endpoints.MapControllers();
             });
+
+            if (env.IsDevelopment())
+            {
+                DataSeed.Seed(dataContext);
+                DataSeed.Seed(customerContext);
+            }
         }
     }
 }
