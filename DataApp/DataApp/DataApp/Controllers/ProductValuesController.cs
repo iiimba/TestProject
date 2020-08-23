@@ -9,7 +9,7 @@ namespace DataApp.Controllers
     {
         private DataContext context;
 
-        private ProductValuesController(DataContext context)
+        protected ProductValuesController(DataContext context)
         {
             this.context = context;
         }
