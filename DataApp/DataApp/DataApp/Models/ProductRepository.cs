@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DataApp.Models
@@ -12,11 +13,11 @@ namespace DataApp.Models
             this.context = context;
         }
 
-        public IEnumerable<Product> Products => this.context.Products.ToArray();
+        public IEnumerable<Product> Products => this.context.Products.Include(p => p.Supplier).ToArray();
 
         public Product GetProduct(long id)
         {
-            var product = this.context.Products.Find(id);
+            var product = this.context.Products.Include(p => p.Supplier).FirstOrDefault(p => p.Id == id);
             return product;
         }
 
