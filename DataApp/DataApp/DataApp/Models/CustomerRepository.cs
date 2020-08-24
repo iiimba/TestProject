@@ -3,6 +3,11 @@ using System.Linq;
 
 namespace DataApp.Models
 {
+    public interface ICustomerRepository
+    {
+        IEnumerable<Customer> GetCustomers();
+    }
+
     public class CustomerRepository : ICustomerRepository
     {
         private CustomerContext context;

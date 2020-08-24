@@ -4,6 +4,21 @@ using System.Linq;
 
 namespace DataApp.Models
 {
+    public interface IProductRepository
+    {
+        IEnumerable<Product> Products { get; }
+
+        Product GetProduct(long id);
+
+        void CreateProduct(Product product);
+
+        void UpdateProduct(Product product);
+
+        void DeleteProduct(Product product);
+
+        IEnumerable<Product> GetFilteredProducts(string category = null, decimal? price = null);
+    }
+
     public class ProductRepository : IProductRepository
     {
         private DataContext context;

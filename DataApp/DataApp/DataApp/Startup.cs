@@ -36,6 +36,8 @@ namespace DataApp
             });
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IGenericRepository<ContactDetails>, GenericRepository<ContactDetails>>();
+            services.AddTransient<IGenericRepository<ContactLocation>, GenericRepository<ContactLocation>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

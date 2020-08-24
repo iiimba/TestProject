@@ -11,5 +11,7 @@ namespace DataApp.Models
         }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Supplier> Suppliers { get; set; }
     }
 }
