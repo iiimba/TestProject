@@ -13,11 +13,11 @@ namespace DataApp.Models
             this.context = context;
         }
 
-        public IEnumerable<Product> Products => this.context.Products.Include(p => p.Supplier).ToArray();
+        public IEnumerable<Product> Products => this.context.Products.Include(p => p.Supplier).ThenInclude(s => s.Contact).ThenInclude(c => c.Location).ToArray();
 
         public Product GetProduct(long id)
         {
-            var product = this.context.Products.Include(p => p.Supplier).FirstOrDefault(p => p.Id == id);
+            var product = this.context.Products.Include(p => p.Supplier).ThenInclude(s => s.Contact).ThenInclude(c => c.Location).FirstOrDefault(p => p.Id == id);
             return product;
         }
 

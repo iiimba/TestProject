@@ -22,13 +22,30 @@ namespace DataApp.Models
                     new Product { Name = "Bling-Bling King", Category = "Chess", Price = 1200, Color = Color.Blue, InStock = true }
                 };
 
+                ContactLocation hq = new ContactLocation
+                {
+                    LocationName = "Corporate HQ",
+                    Address = "200 Acme Way"
+                };
+                ContactDetails ЬоЬ = new ContactDetails
+                {
+                    Name = "Bob Smith",
+                    Phone = "555-107-1234",
+                    Location = hq
+                };
+                Supplier acme = new Supplier
+                {
+                    Name = "Acme Со",
+                    City = "New York",
+                    State = "NY",
+                    Contact = ЬоЬ
+                };
                 Supplier sl = new Supplier
                 {
                     Name = "Surf Dudes",
                     City = "San Jose",
                     State = "СА"
                 };
-
                 Supplier s2 = new Supplier
                 {
                     Name = "Chess Kings",
@@ -36,9 +53,21 @@ namespace DataApp.Models
                     State = "WA"
                 };
 
-                products.First().Supplier = sl;
-                foreach (Product р in products.Where(р => р.Category == "Chess"))
-                    р.Supplier = s2;
+                foreach (var p in products)
+                {
+                    if (p == products[0])
+                    {
+                        p.Supplier = sl;
+                    }
+                    else if (p.Category == "Chess")
+                    {
+                        p.Supplier = s2;
+                    }
+                    else
+                    {
+                        p.Supplier = acme;
+                    }
+                }
 
                 return products;
             }
