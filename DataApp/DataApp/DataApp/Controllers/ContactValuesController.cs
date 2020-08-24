@@ -5,12 +5,12 @@ namespace DataApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ContactController : ControllerBase
+    public class ContactValuesController : ControllerBase
     {
         IGenericRepository<ContactDetails> contactDetailsRepository;
         IGenericRepository<ContactLocation> contactLocationRepository;
 
-        public ContactController(IGenericRepository<ContactDetails> contactDetailsRepository, IGenericRepository<ContactLocation> contactLocationRepository)
+        public ContactValuesController(IGenericRepository<ContactDetails> contactDetailsRepository, IGenericRepository<ContactLocation> contactLocationRepository)
         {
             this.contactDetailsRepository = contactDetailsRepository;
             this.contactLocationRepository = contactLocationRepository;
