@@ -1,4 +1,6 @@
-﻿namespace DataApp.Models
+﻿using System.Collections.Generic;
+
+namespace DataApp.Models
 {
     public class Product
     {
@@ -16,6 +18,8 @@
         public long SupplierId { get; set; }
 
         public Supplier Supplier { get; set; }
+
+        public IEnumerable<ProductShipmentJunction> ProductShipments { get; set; }
     }
 
     public enum Color

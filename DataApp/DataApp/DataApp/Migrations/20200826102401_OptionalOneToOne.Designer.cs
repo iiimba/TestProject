@@ -4,14 +4,16 @@ using DataApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200826102401_OptionalOneToOne")]
+    partial class OptionalOneToOne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,49 +101,6 @@ namespace DataApp.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DataApp.Models.ProductShipmentJunction", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ShipmentId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ShipmentId");
-
-                    b.ToTable("ProductShipmentJunction");
-                });
-
-            modelBuilder.Entity("DataApp.Models.Shipment", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EndCity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShipperName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StartCity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Shipment");
-                });
-
             modelBuilder.Entity("DataApp.Models.Supplier", b =>
                 {
                     b.Property<long>("Id")
@@ -179,21 +138,6 @@ namespace DataApp.Migrations
                     b.HasOne("DataApp.Models.Supplier", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DataApp.Models.ProductShipmentJunction", b =>
-                {
-                    b.HasOne("DataApp.Models.Product", "Product")
-                        .WithMany("ProductShipments")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataApp.Models.Shipment", "Shipment")
-                        .WithMany("ProductShipments")
-                        .HasForeignKey("ShipmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

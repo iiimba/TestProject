@@ -80,6 +80,19 @@ namespace DataApp.Models
             new Customer { Name = "Charlie Davies", City = "London", Country = "UK" }
         };
 
+        public static Shipment[] Shipments
+        {
+            get
+            {
+                return new Shipment[]
+                {
+                    new Shipment { ShipperName = "Express Со", StartCity = "New York", EndCity = "San Jose" },
+                    new Shipment { ShipperName = "Tortoise Shipping", StartCity = "Boston", EndCity = "Chicago" },
+                    new Shipment { ShipperName = "Air Express", StartCity = "Мiami", EndCity = "Seattle" }
+                };
+            }
+        }
+
         public static void Seed(DbContext context)
         {
             if (context.Database.GetPendingMigrations().Count() == 0)
@@ -87,6 +100,7 @@ namespace DataApp.Models
                 if (context is DataContext productContext && productContext.Products.Count() == 0)
                 {
                     productContext.Products.AddRange(Products);
+                    productContext.Set<Shipment>().AddRange(Shipments);
                 }
                 else if (context is CustomerContext customerContext && customerContext.Customers.Count() == 0)
                 {
